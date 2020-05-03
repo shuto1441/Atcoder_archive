@@ -1,0 +1,48 @@
+using namespace std;
+#include <bits/stdc++.h>
+#define rep(i, s) for (int i = 0; i < s; ++i)
+#define repr(i, n) for(int i = n; i >= 0; i--)
+#define FOR(i, m, n) for(int i = m; i < n; i++)
+#define all(v) (v.begin(), v.end())
+#define EACH(i, s) for (__typeof__((s).begin()) i = (s).begin(); i != (s).end(); ++i)
+#define VEC(a, n) vector<int>a(n)
+#define VECV(a,n,m) vector<vector<int>> a(n, vector<int>(m));
+#define PQ(a) priority_queue<int>a
+#define PQmin(a) priority_queue< int, :vector<int>, greater<int> >a
+#define PAIR pair<int, int>
+typedef long long ll;
+typedef pair<ll, ll> l_l;
+typedef pair<int, int> i_i;
+#define EPS (1e-7)
+#define INF (1e10)
+#define PI (acos(-1))
+const ll mod = 1000000007;
+bool f(string s){
+  bool ans=true;
+  rep(i,s.size()/2){
+    if(s[i]!=s[s.size()/2+i]){
+      ans=false;
+      break;
+    }
+  }
+  return ans;
+}
+int main(){
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int N;
+  int t[110000],x[110000],y[110000];
+  t[0]=x[0]=y[0]=0;
+  cin>>N;
+  rep(i,N)cin>>t[i+1]>>x[i+1]>>y[i+1];
+  bool f=true;
+  rep(i,N){
+    int dt=t[i+1]-t[i];
+    int dist=abs(x[i+1]-x[i])+abs(y[i+1]-y[i]);
+    if(dist>dt) f=false;
+    if(dist%2!=dt%2) f=false;
+  }
+  if(f)cout<<"Yes"<<endl;
+  else cout<<"No"<<endl;
+
+}
